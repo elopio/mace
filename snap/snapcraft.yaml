@@ -1,0 +1,24 @@
+name: mace
+version: master
+summary: A Modern Text Editor
+description: |
+  A modern Unix text editor taking inspiration from Acme, Emacs and Atom.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  mace:
+    command: mace
+
+parts:
+  mace:
+    source: .
+    plugin: meson
+    build-packages:
+     - libx11-dev
+     - fontconfig
+     - libfreetype6-dev
+     - libcairo2-dev
+     - liblua5.3-dev
+    install: mv snapbuild/mace $SNAPCRAFT_PART_INSTALL
